@@ -5,29 +5,24 @@ import {
 } from 'react-native';
 import * as Animatable from 'react-native-animatable'
 import Images from '../config/images';
+import styles from '../config/styles';
 
 export default class SplashScreen extends Component {
-    goToScreen(routeName){
-        this.props.navigation.navigate(routeName);
-    }
+    
     componentDidMount(){
-        setTimeout(() => {
-            this.goToScreen('LoginScreen')
+        setTimeout(() => {            
+            this.props.navigation.navigate('LoginScreen');
         }, 5000, this);
     }
     render(){
         return(
-            <View>
+            <View style={[styles.container, styles.backgroundcolor]}>
                <StatusBar translucent backgroundColor='rgba(0,0,0,0.3)' />
                <Animatable.Image 
                     animation="pulse"
                     easing="ease-out"
                     iterationCount="infinite"
-                    style={{
-                        width: 200,
-                        height: 200,
-                        margin: 100,
-                    }}
+                    style={ styles.animatedImage}
                     source={Images.splash}
                />
             </View>

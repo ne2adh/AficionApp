@@ -4,13 +4,12 @@ import {
     Text
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import styles from '../config/styles';
 
 export default class LoginScreen extends Component {
     render(){
         return(
-            <SafeAreaView
-                style={{ flex: 1, justifyContent: 'space-between', alignItems: 'center' }}
-            >
+            <SafeAreaView  style={styles.safeareaview} >
                 <View>
                     <Text> sdfsdfsd GIANCARLO</Text>
                 </View>
