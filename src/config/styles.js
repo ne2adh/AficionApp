@@ -14,24 +14,20 @@ const containers = StyleSheet.create({
         alignItems: 'center',
         height: '100%',
     },
-    backgroundcolor:{
-        backgroundColor: colors.white,
-    },
-    animatedImage:{
-        width: 140,
-        height: 140,
+    container_1:{
+        flex: 1,        
     },
 });
 
 const loginStyles = StyleSheet.create({
     container: {
-        flex: 1,         
+        flexGrow: 1,         
         alignItems: 'center',
+        justifyContent: 'center'
     },
     logo :{
         width: 90, 
-        height: 90, 
-        marginTop: 50
+        height: 90,       
     }
 });
 

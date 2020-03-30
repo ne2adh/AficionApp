@@ -16,13 +16,13 @@ export default class SplashScreen extends Component {
     }
     render(){
         return(
-            <View style={[containers.container, containers.backgroundcolor]}>
+            <View style={containers.container}>
                <StatusBar translucent backgroundColor='rgba(0,0,0,0.3)' />
                <Animatable.Image 
                     animation="pulse"
                     easing="ease-out"
                     iterationCount="infinite"
-                    style={ containers.animatedImage}
+                    style={{width: 140, height: 140}}
                     source={Images.splash}
                />
             </View>

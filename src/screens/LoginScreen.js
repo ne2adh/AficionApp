@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
     View,
     Image,
-    StatusBar
+	StatusBar,
+	KeyboardAvoidingView
 } from 'react-native';
 import TextInput from '../components/TextInput';
 import ButtonInput from '../components/ButtonInput';
@@ -43,9 +44,9 @@ export default class LoginScreen extends Component {
         const { hidePassword, email, password } = this.state;
         
         return(
-            
+            <KeyboardAvoidingView behavior="height" style={containers.container_1}>
             <View style={loginStyles.container}>
-                <StatusBar backgroundColor={colors.ypsDark} translucent={true} />                    
+				<StatusBar translucent backgroundColor='rgba(0,0,0,0.3)' />                    
                 <Image source={images.splash} style={loginStyles.logo} />                    
                 <TextInput 
                     name='email'
@@ -55,21 +56,23 @@ export default class LoginScreen extends Component {
                     onChangeText={this.handleEmailChange}
                     iconNameLeft='user'
                     iconColor= {colors.ypsDark} 
-                    keyboardType='email-address'                    
+					keyboardType='email-address'
+					returnKeyType='next'                    
                 />
                 <TextInput 
                     name='password'
                     value={password}                        
                     placeholder='Contrasena'
                     autoCapitalize='none'
-                    onChangeText={this.handleEmailChange}
+                    onChangeText={this.handlePasswordChange}
                     iconNameLeft='lock'
                     iconNameRight='eye-slash'                        
                     iconColor= {colors.ypsDark} 
                     keyboardType={null}
                     bolGone={true}
                     secureTextEntry={hidePassword}
-                    onPress={ () => this.setHidePassword(!hidePassword) }
+					onPress={ () => this.setHidePassword(!hidePassword) }
+					returnKeyType='go' 
                 />
                 <ButtonInput 
                     title=' Iniciar Session' 
@@ -79,7 +82,7 @@ export default class LoginScreen extends Component {
                     onPress={this.iniciarSesion()}
                 />
             </View>               
-            
+            </KeyboardAvoidingView>
         )
     }
 }    
