@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import * as Animatable from 'react-native-animatable'
 import Images from '../config/images';
-import styles from '../config/styles';
+import {containers} from '../config/styles';
 
 export default class SplashScreen extends Component {
     
@@ -16,13 +16,13 @@ export default class SplashScreen extends Component {
     }
     render(){
         return(
-            <View style={[styles.container, styles.backgroundcolor]}>
+            <View style={[containers.container, containers.backgroundcolor]}>
                <StatusBar translucent backgroundColor='rgba(0,0,0,0.3)' />
                <Animatable.Image 
                     animation="pulse"
                     easing="ease-out"
                     iterationCount="infinite"
-                    style={ styles.animatedImage}
+                    style={ containers.animatedImage}
                     source={Images.splash}
                />
             </View>

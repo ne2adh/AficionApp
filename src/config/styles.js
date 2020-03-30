@@ -1,9 +1,8 @@
 import { StyleSheet } from 'react-native';
-import fonts from './fonts';
 import colors from './colors';
 
 
-const styles = StyleSheet.create({
+const containers = StyleSheet.create({
     safeareaview: {
         flex: 1, 
         justifyContent: 'space-between',
@@ -23,5 +22,18 @@ const styles = StyleSheet.create({
         height: 140,
     },
 });
+
+const loginStyles = StyleSheet.create({
+    container: {
+        flex: 1,         
+        alignItems: 'center',
+    },
+    logo :{
+        width: 90, 
+        height: 90, 
+        marginTop: 50
+    }
+});
+
           
-export default styles;
+export {containers, loginStyles};
