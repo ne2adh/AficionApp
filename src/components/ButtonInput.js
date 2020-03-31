@@ -8,7 +8,7 @@ import colors  from '../config/colors';
 const ButtonInput = ({
     iconName,    
     iconColor,
-    buttonColor,    
+    buttonColor,
     title,
     ...rest
   }) => (

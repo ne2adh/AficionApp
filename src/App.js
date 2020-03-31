@@ -7,10 +7,10 @@ import { SafeAreaProvider} from 'react-native-safe-area-context';
 import {createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import peopleReducer from './redux/reducers/peopleReducer';
+import reducer from './redux/reducers/index';
 const createStoreWithMeddleware = applyMiddleware(thunk)(createStore);
 
-const store = createStoreWithMeddleware(peopleReducer); 
+const store = createStoreWithMeddleware(reducer); 
 
 const App = ()  => {
   return (

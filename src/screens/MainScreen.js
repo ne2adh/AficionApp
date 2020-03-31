@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
     View,
     ActivityIndicator
 } from 'react-native';
 import {containers} from '../config/styles';
 import PeopleList from '../components/PeopleList';
-import { fetchPeople } from '../redux/actions/peopleActions';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { fetchPeople } from '../redux/actions/peopleActions';
 
 class MainScreen extends Component {
  
