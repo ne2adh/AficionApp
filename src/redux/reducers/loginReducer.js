@@ -4,7 +4,7 @@ import {
     SET_USER 
 } from '../actions/types';
 
-const loginReducer = (state = { }, action) => {
+export default function loginReducer(state = { }, action) {
 	switch (action.type) {
 		case SET_USER : {
 		const { user } = action
@@ -28,4 +28,3 @@ const loginReducer = (state = { }, action) => {
     	}
 	}
 }
-export default loginReducer;

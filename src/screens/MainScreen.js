@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-    View,
+	View,
+	Text,
     ActivityIndicator
 } from 'react-native';
 import {containers} from '../config/styles';
@@ -11,7 +12,8 @@ import { fetchPeople } from '../redux/actions/peopleActions';
 
 class MainScreen extends Component {
  
-      componentDidMount() {        
+      componentDidMount() {
+		  console.log('ingreso fetchpeo');        
         this.props.fetchPeople();
       }
     
@@ -20,13 +22,18 @@ class MainScreen extends Component {
         if (this.props.randomPeople.isFetching) {
           content = <ActivityIndicator size="large" />;
         }
-        return <View style={containers.container}>{content}</View>;
+        return (
+			<View style={containers.container}>
+				<Text>HOLAS</Text>
+				{content}
+			</View>
+		);
       }
 }
 
 MainScreen.propTypes ={
     fetchPeople: PropTypes.func.isRequired,
-    randomPeople: PropTypes.object.isRequired
+	randomPeople: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => {
@@ -34,6 +41,5 @@ const mapStateToProps = state => {
         randomPeople: state
     };
 }
-
 
 export default connect(mapStateToProps, { fetchPeople })(MainScreen);

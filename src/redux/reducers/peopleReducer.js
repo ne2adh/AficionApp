@@ -10,7 +10,7 @@ const initialState = {
     people:[]
 }
 
-const peopleReducer = (state = initialState, action) =>{
+export default function peopleReducer (state = initialState, action){
     switch (action.type) {
         case FETCHING_PEOPLE_REQUEST:            
             return {...state, isFetching: true };    
@@ -23,4 +23,3 @@ const peopleReducer = (state = initialState, action) =>{
     }
 };
 
-export default peopleReducer;

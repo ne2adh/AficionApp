@@ -40,16 +40,20 @@ class LoginScreen extends Component {
       handlePasswordChange = password => {
         this.setState({ password })
       }
+
       iniciarSesion(){          
 			console.log('iniciar seccion');
 			this.setState({ loader : true });
 			this.props.logIn(this.state).then(($result) => {
-				//todo salio bien enviamos a otra vista donde veremos el perfild del usuario
-				console.log('Sing IN');
+                //todo salio bien enviamos a otra vista donde veremos el perfild del usuario
+                this.setState({ loader : false });
+                this.props.navigation.navigate('MainScreen');
 			}).catch( (err) => {
+                this.setState({ loader : false });
 				Alert.alert('Error',err.message);
 			})     
       }
+
     render(){
         const { hidePassword, email, password } = this.state;
         
