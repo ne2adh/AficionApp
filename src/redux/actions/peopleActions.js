@@ -15,9 +15,8 @@ export const fetchingPeopleFailure = (error) => ({
 });
 
 export const fetchPeople = () =>{
-    return async dispatch =>{
-        console.log('dispatch');
-        dispatch(fetchingPeopleRequest());
+    return async function(dispatch) {
+            dispatch(fetchingPeopleRequest());
         try{
             let response = await fetch("https://randomuser.me/api/?results=5");
             let json = await response.json();

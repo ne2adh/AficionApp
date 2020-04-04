@@ -7,12 +7,24 @@ import { SafeAreaProvider} from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 import {createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import logger from 'redux-logger';
 import reducer from './redux/reducers';
-
-const createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore);
+/* import reduxMulti from 'redux-multi'
+import { batchedSubscribe } from 'redux-batched-subscribe' */
+const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 const store = createStoreWithMiddleware(reducer);
+//const store = createStore(reducer, applyMiddleware(thunk));
 
+/* const createStoreWithMiddleware = applyMiddleware(
+	thunk,
+	reduxMulti,
+  )(createStore)
+  
+  const createStoreWithBatching = batchedSubscribe(
+	fn => fn()
+  )(createStoreWithMiddleware)
+    
+  const store = createStoreWithBatching(reducer)
+ */
 const App = ()  => {
   return (
     <>

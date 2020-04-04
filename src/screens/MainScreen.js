@@ -24,7 +24,6 @@ class MainScreen extends Component {
         }
         return (
 			<View style={containers.container}>
-				<Text>HOLAS</Text>
 				{content}
 			</View>
 		);
@@ -36,9 +35,10 @@ MainScreen.propTypes ={
 	randomPeople: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => {
+
+const mapStateToProps = (state) => {
     return {
-        randomPeople: state
+        randomPeople: state.peopleReducer
     };
 }
 

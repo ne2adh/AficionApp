@@ -11,6 +11,7 @@ const initialState = {
 }
 
 export default function peopleReducer (state = initialState, action){
+    console.log(action.type)
     switch (action.type) {
         case FETCHING_PEOPLE_REQUEST:            
             return {...state, isFetching: true };    

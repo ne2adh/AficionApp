@@ -16,6 +16,7 @@ export const logIn = ({ email, password }) => (dispatch, getState) => {
         })
         .then((response) => response.json())
         .then((responseJson) => {
+            console.log(responseJson);
             if(responseJson.success=='success'){
                 dispatch({
                     type: SET_SESSION,
