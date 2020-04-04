@@ -13,7 +13,7 @@ import {loginStyles, containers } from '../config/styles';
 import  colors  from '../config/colors';
 import images from '../config/images';
 import { connect } from 'react-redux';
-import { logIn } from '../redux/actions/loginInActions';
+import { logIn } from '../redux/actions/loginActions';
 
 class LoginScreen extends Component {
 

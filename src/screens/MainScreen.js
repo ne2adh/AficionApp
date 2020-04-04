@@ -12,8 +12,7 @@ import { fetchPeople } from '../redux/actions/peopleActions';
 
 class MainScreen extends Component {
  
-      componentDidMount() {
-		  console.log('ingreso fetchpeo');        
+      componentDidMount() {		          
         this.props.fetchPeople();
       }
     
