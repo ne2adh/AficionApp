@@ -25,7 +25,7 @@ class LoginScreen extends Component {
 			hidePassword: true,
 			loader       : false
           }
-        this.iniciarSesion = this.iniciarSesion.bind(this);// you should bind this to the method that call the props
+        this._login = this._login.bind(this);// you should bind this to the method that call the props
     }
     
 
@@ -41,13 +41,13 @@ class LoginScreen extends Component {
         this.setState({ password })
       }
 
-      iniciarSesion(){          
-			console.log('iniciar seccion');
-			this.setState({ loader : true });
+      _login(){          
+			    this.setState({ loader : true });
 			this.props.logIn(this.state).then(($result) => {
                 //todo salio bien enviamos a otra vista donde veremos el perfild del usuario
                 this.setState({ loader : false });
                 this.props.navigation.navigate('MainScreen');
+                Alert.alert('confirmación','Iniciaste sesión correctamente');
 			}).catch( (err) => {
                 this.setState({ loader : false });
 				Alert.alert('Error',err.message);
@@ -91,7 +91,7 @@ class LoginScreen extends Component {
                     iconName='sign-in' 
                     iconColor= {colors.white} 
 					buttonColor={colors.ypsDark} 					
-                    onPress={ () => this.iniciarSesion()}
+                    onPress={ () => this._login()}
                 />
             </View>               
             </KeyboardAvoidingView>

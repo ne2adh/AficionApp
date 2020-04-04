@@ -29,9 +29,9 @@ export const logIn = ({ email, password }) => (dispatch, getState) => {
             }
         })
         .catch((error) =>{
-            if(err.response && err.response.error)
-                    return reject(err.response.error)
+            if(error.response && error.response.error)
+                    return error.response.error;
                 else
-                    return reject({ error : true, message : "Ocurrio un error por favor intenta más tarde."});
+                    return { error : true, message : "Ocurrio un error por favor intenta más tarde." };
       });
 }
