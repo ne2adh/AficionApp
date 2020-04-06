@@ -13,46 +13,47 @@ import {loginStyles, containers } from '../config/styles';
 import  colors  from '../config/colors';
 import images from '../config/images';
 import { connect } from 'react-redux';
-import { logIn } from '../redux/actions/loginActions';
+import { logIn, checkLogin } from '../redux/actions/loginActions';
 
 class LoginScreen extends Component {
 
     constructor(props){
         super(props);
+        
         this.state = {
             email: '',
             password: '',
 			hidePassword: true,
 			loader       : false
           }
-        this._login = this._login.bind(this);// you should bind this to the method that call the props
+        this._login = this._login.bind(this);// you should bind this to the method that call the props        
     }
-    
+       
 
-      setHidePassword = arg => {
+    setHidePassword = arg => {
         this.setState({ hidePassword:arg })
-      }
-    
-      handleEmailChange = email => {
-        this.setState({ email })
-      }
-    
-      handlePasswordChange = password => {
-        this.setState({ password })
-      }
+    }
 
-      _login(){          
-			    this.setState({ loader : true });
-			this.props.logIn(this.state).then(($result) => {
-                //todo salio bien enviamos a otra vista donde veremos el perfild del usuario
-                this.setState({ loader : false });
-                this.props.navigation.navigate('MainScreen');
-                Alert.alert('confirmación','Iniciaste sesión correctamente');
-			}).catch( (err) => {
-                this.setState({ loader : false });
-				Alert.alert('Error',err.message);
-			})     
-      }
+    handleEmailChange = email => {
+        this.setState({ email })
+    }
+
+    handlePasswordChange = password => {
+        this.setState({ password })
+    }
+
+    _login(){          
+            this.setState({ loader : true });
+        this.props.logIn(this.state).then(($result) => {
+            //todo salio bien enviamos a otra vista donde veremos el perfild del usuario
+            this.setState({ loader : false });
+            //this.props.navigation.navigate('MainScreen');
+            console.log('Iniciaste Session Correctamente');
+        }).catch( (err) => {
+            this.setState({ loader : false });
+            Alert.alert('Error',err.message);
+        })     
+    }
 
     render(){
         const { hidePassword, email, password } = this.state;
@@ -101,13 +102,12 @@ class LoginScreen extends Component {
 
 LoginScreen.propTypes ={
     logIn: PropTypes.func.isRequired,
-    user: PropTypes.bool.isRequired
-};
 
-function MapStateToProps(state){
+};
+/* function MapStateToProps(state){
     return {
         user : state.session && state.session.user ? state.session.user : false
     }
-}
+} */
  
-export default connect(MapStateToProps,{ logIn })(LoginScreen);
+export default connect(null,{ logIn })(LoginScreen);

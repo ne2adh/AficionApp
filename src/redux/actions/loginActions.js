@@ -1,8 +1,12 @@
 import qs from 'qs';
 import {
-    SET_SESSION
+    SET_SESSION,
+    AUTH_CHECKED
 } from './types';
 import { API_LOGIN } from '../../config/const';
+
+export const authChecked = () => ({type: AUTH_CHECKED});
+
 export const logIn = ({ email, password }) => (dispatch, getState) => {
     return fetch(API_LOGIN,{
         method: 'POST',
@@ -15,23 +19,23 @@ export const logIn = ({ email, password }) => (dispatch, getState) => {
         })
         })
         .then((response) => response.json())
-        .then((responseJson) => {
-            console.log(responseJson);
-            if(responseJson.success=='success'){
+        .then((responseJson) => {            
+            if(responseJson.success){
+                console.log(responseJson.success);
+                dispatch(authChecked())
                 dispatch({
                     type: SET_SESSION,
-                    user: responseJson.success.user,                    
                     token: responseJson.success.token
                 })
-                return resolve(responseJson.success)
-            } else{
-                return responseJson.error;
+                return Promise.resolve(responseJson.success)
+            } else{                            
+                return Promise.reject(responseJson);
             }
         })
-        .catch((error) =>{
-            if(error.response && error.response.error)
-                    return error.response.error;
+        .catch((err) =>{       
+            if(err && err.error)
+                    return Promise.reject({error: true, message: err.error});
                 else
-                    return { error : true, message : "Ocurrio un error por favor intenta más tarde." };
+                    return Promise.reject({error : true, message : "Ocurrio un error por favor intenta más tarde." });
       });
 }

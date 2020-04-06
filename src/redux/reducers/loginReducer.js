@@ -1,28 +1,25 @@
 import { 
-    SET_SESSION, 
-    CLEAR_SESION, 
-    SET_USER 
+	SET_SESSION,
+	AUTH_CHECKED
 } from '../actions/types';
 
-export default function loginReducer(state = { }, action) {
-	switch (action.type) {
-		case SET_USER : {
-		const { user } = action
+const initial_state = {
+    auth_checked: false
+}
+
+
+export default function loginReducer(state = initial_state, action) {	
+	switch (action.type) {		
+		case SET_SESSION : 
 			return {
 				...state,
-				user
+				token: action
 			}
-		}
-		case CLEAR_SESION: {
-			return { };
-		}
-		case SET_SESSION : {
-			const { token, user } = action
-			return {
-				token,
-				user
-			}
-		}
+		case AUTH_CHECKED:
+			return { 
+				...state, 
+				auth_checked: true 
+			};
 		default: {
       		return state
     	}
