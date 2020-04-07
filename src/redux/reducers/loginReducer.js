@@ -10,18 +10,11 @@ const initial_state = {
 
 export default function loginReducer(state = initial_state, action) {	
 	switch (action.type) {		
-		case SET_SESSION : 
-			return {
-				...state,
-				token: action
-			}
+		case SET_SESSION :
+			return { ...state, token: action };
 		case AUTH_CHECKED:
-			return { 
-				...state, 
-				auth_checked: true 
-			};
-		default: {
+			return { ...state, auth_checked: true };
+		default: 
       		return state
-    	}
 	}
 }

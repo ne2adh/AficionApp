@@ -44,11 +44,8 @@ class LoginScreen extends Component {
 
     _login(){          
             this.setState({ loader : true });
-        this.props.logIn(this.state).then(($result) => {
-            //todo salio bien enviamos a otra vista donde veremos el perfild del usuario
+        this.props.logIn(this.state).then(($result) => {            
             this.setState({ loader : false });
-            //this.props.navigation.navigate('MainScreen');
-            console.log('Iniciaste Session Correctamente');
         }).catch( (err) => {
             this.setState({ loader : false });
             Alert.alert('Error',err.message);

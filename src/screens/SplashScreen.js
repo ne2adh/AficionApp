@@ -7,13 +7,7 @@ import * as Animatable from 'react-native-animatable'
 import Images from '../config/images';
 import {containers} from '../config/styles';
 
-export default class SplashScreen extends Component {
-    
-    componentDidMount(){
-        setTimeout(() => {            
-           // this.props.navigation.navigate('LoginScreen');
-        }, 5000, this);
-    }
+export default class SplashScreen extends Component {    
     render(){
         return(
             <View style={containers.container}>

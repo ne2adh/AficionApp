@@ -15,37 +15,33 @@ class AppNavegation extends Component {
 		super(props);
 		this.state = { isLoading: true }
 	}
+	
 	performTimeConsumingTask = async() => {
 		return new Promise((resolve) =>
 		  setTimeout(
 			() => { resolve('result') },
-			2000
+			5000
 		  )
 		);
 	  }
 	
-	  async componentDidMount() {
-		// Preload data from an external API
-		// Preload data using AsyncStorage
-		const data = await this.performTimeConsumingTask();
-	
-		if (data !== null) {
-		  this.setState({ isLoading: false });
-		}
-	  }
+	async componentDidMount() {
+	const data = await this.performTimeConsumingTask();	
+	if (data !== null) {
+		this.setState({ isLoading: false });
+	}
+	}
     render() {
-        // get Authentication Check and Authentication state from AppReducer.js
-		if (this.state.isLoading) {
+        if (this.state.isLoading) {
 			return <SplashScreen />;
 		}		  
-		const { auth_checked } = this.props.appState;		  
-		console.log(auth_checked);
+		const { auth_checked } = this.props.appState;		  		
 		return (    
 			<Stack.Navigator headerMode="none">
 				{ auth_checked ?  		
-				<Stack.Screen name="MainScreen" component={MainScreen} />
+					<Stack.Screen name="MainScreen" component={MainScreen} />
 				:
-				<Stack.Screen name="LoginScreen" component={LoginScreen} />
+					<Stack.Screen name="LoginScreen" component={LoginScreen} />
 				}
 			</Stack.Navigator>
 		);
