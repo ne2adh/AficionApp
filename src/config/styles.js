@@ -37,15 +37,19 @@ const customDrawen = StyleSheet.create({
         flex: 1,
     },
     userInfoSection: {
-        paddingLeft: 20,
+        width:undefined, 
+        padding: 16, 
+        paddingTop: 18,
     },
     title: {
         marginTop: 20,
-        fontWeight: 'bold',
+        fontWeight: 'bold',        
+        color: 'white',
     },
     caption: {
         fontSize: 14,
         lineHeight: 14,
+        color: 'white',
     },
     row: {
         marginTop: 20,

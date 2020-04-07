@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { DrawerActions } from '@react-navigation/native';
 import {
 	createStackNavigator
 } from '@react-navigation/stack';
@@ -10,14 +11,15 @@ import {
 	DrawerContentScrollView
 } from '@react-navigation/drawer';
 
-import { DrawerActions } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Avatar } from 'react-native-elements';
 import { customDrawen } from '../config/styles';
+import images from '../config/images';
 
 import {
 	View,
 	Text,
+	ImageBackground,
 	TouchableOpacity
 } from 'react-native';
 
@@ -27,33 +29,37 @@ import MainScreen from '../screens/MainScreen';
 import { connect } from 'react-redux';
 
 const Stack = createStackNavigator();
-
 const Drawer = createDrawerNavigator();
 
 function CustomDrawerContent(props) {
 	return (
 		<DrawerContentScrollView {...props}>
 			<View style={customDrawen.drawerContent}>
-				<View style={customDrawen.userInfoSection}>
-					<Avatar
-						size={50}
-						rounded
-						source={{
-							uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-						}}
-					/>
-					<Text style={customDrawen.title}>Dawid Urbaniak</Text>
-					<Text style={customDrawen.caption}>@trensik</Text>
-					<View style={customDrawen.row}>
-						<View style={customDrawen.section}>
-							<Text style={[customDrawen.paragraph, customDrawen.caption]}>202</Text>
-							<Text style={customDrawen.caption}>Following</Text>
+				<View>
+					<ImageBackground 
+						source={images.background_1}
+						style={customDrawen.userInfoSection}
+					>
+						<Avatar
+							size={50}
+							rounded
+							source={{
+								uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+							}}
+						/>
+						<Text style={customDrawen.title}>Dawid Urbaniak</Text>
+						<Text style={customDrawen.caption}>@trensik</Text>
+						<View style={customDrawen.row}>
+							<View style={customDrawen.section}>
+								<Text style={[customDrawen.paragraph, customDrawen.caption]}>202</Text>
+								<Text style={customDrawen.caption}>Following</Text>
+							</View>
+							<View style={customDrawen.section}>
+								<Text style={[customDrawen.paragraph, customDrawen.caption]}>159</Text>
+								<Text style={customDrawen.caption}>Followers</Text>
+							</View>
 						</View>
-						<View style={customDrawen.section}>
-							<Text style={[customDrawen.paragraph, customDrawen.caption]}>159</Text>
-							<Text style={customDrawen.caption}>Followers</Text>
-						</View>
-					</View>
+					</ImageBackground>
 				</View>
 				<View style={customDrawen.drawerSection}>
 					<DrawerItem
