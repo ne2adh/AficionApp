@@ -13,7 +13,7 @@ import {loginStyles, containers } from '../config/styles';
 import  colors  from '../config/colors';
 import images from '../config/images';
 import { connect } from 'react-redux';
-import { logIn, checkLogin } from '../redux/actions/loginActions';
+import { logIn } from '../redux/actions/loginActions';
 
 class LoginScreen extends Component {
 
@@ -46,6 +46,7 @@ class LoginScreen extends Component {
             this.setState({ loader : true });
         this.props.logIn(this.state).then(($result) => {            
             this.setState({ loader : false });
+            console.log('iniciaste session correctamente');
         }).catch( (err) => {
             this.setState({ loader : false });
             Alert.alert('Error',err.message);

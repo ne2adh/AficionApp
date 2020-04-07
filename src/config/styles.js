@@ -4,7 +4,7 @@ import colors from './colors';
 
 const containers = StyleSheet.create({
     safeareaview: {
-        flex: 1, 
+        flex: 1,
         justifyContent: 'space-between',
         alignItems: 'center',
     },
@@ -14,22 +14,63 @@ const containers = StyleSheet.create({
         alignItems: 'center',
         height: '100%',
     },
-    container_1:{
-        flex: 1,        
+    container_1: {
+        flex: 1,
     },
 });
 
 const loginStyles = StyleSheet.create({
     container: {
-        flexGrow: 1,         
+        flexGrow: 1,
         alignItems: 'center',
         justifyContent: 'center'
     },
-    logo :{
-        width: 90, 
-        height: 90,       
+    logo: {
+        width: 90,
+        height: 90,
     }
 });
 
-          
-export {containers, loginStyles};
+
+const customDrawen = StyleSheet.create({
+    drawerContent: {
+        flex: 1,
+    },
+    userInfoSection: {
+        paddingLeft: 20,
+    },
+    title: {
+        marginTop: 20,
+        fontWeight: 'bold',
+    },
+    caption: {
+        fontSize: 14,
+        lineHeight: 14,
+    },
+    row: {
+        marginTop: 20,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    section: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginRight: 15,
+    },
+    paragraph: {
+        fontWeight: 'bold',
+        marginRight: 3,
+    },
+    drawerSection: {
+        marginTop: 15,
+    },
+    preference: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingVertical: 12,
+        paddingHorizontal: 16,
+    },
+});
+
+
+export { containers, loginStyles, customDrawen };
