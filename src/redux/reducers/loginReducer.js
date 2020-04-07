@@ -4,6 +4,7 @@ import {
 } from '../actions/types';
 
 const initial_state = {
+	already_logged: false,
     auth_checked: false
 }
 
@@ -11,7 +12,7 @@ const initial_state = {
 export default function loginReducer(state = initial_state, action) {	
 	switch (action.type) {		
 		case SET_SESSION :
-			return { ...state, token: action };
+			return { ...state, already_logged: true, token: action };
 		case AUTH_CHECKED:
 			return { ...state, auth_checked: true };
 		default: 

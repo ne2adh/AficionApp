@@ -20,8 +20,7 @@ export const logIn = ({ email, password }) => (dispatch, getState) => {
         })
         .then((response) => response.json())
         .then((responseJson) => {
-            if (responseJson.success) {
-                dispatch(authChecked());
+            if (responseJson.success) {                
                 dispatch({
                     type: SET_SESSION,
                     token: responseJson.success.token
@@ -37,4 +36,11 @@ export const logIn = ({ email, password }) => (dispatch, getState) => {
             else
                 return Promise.reject({ error: true, message: "Ocurrio un error por favor intenta más tarde." });
         });
+}
+
+export const checkLogin = () =>{
+    return function(dispatch) {
+        //let response = await fetch("https://randomuser.me/api/?results=15");
+        dispatch(authChecked())
+    }
 }
