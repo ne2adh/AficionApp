@@ -1,9 +1,10 @@
 import qs from 'qs';
 import {
-    SET_SESSION,
+    LOGIN,
     AUTH_CHECKED
 } from './types';
 import { API_LOGIN } from '../../config/const';
+import AsyncStorage from "@react-native-community/async-storage";
 
 export const authChecked = () => ({ type: AUTH_CHECKED });
 
@@ -20,11 +21,11 @@ export const logIn = ({ email, password }) => (dispatch, getState) => {
         })
         .then((response) => response.json())
         .then((responseJson) => {
-            if (responseJson.success) {                
-                dispatch({
-                    type: SET_SESSION,
-                    token: responseJson.success.token
-                })
+            if (responseJson.success) {                                
+                AsyncStorage.setItem('token', responseJson.success.token)
+                    .then(() => dispatch({ type: LOGIN }))
+                    .catch(error => console.debug(error))
+                    
                 return Promise.resolve(responseJson.success)
             } else {
                 return Promise.reject(responseJson);
@@ -40,7 +41,11 @@ export const logIn = ({ email, password }) => (dispatch, getState) => {
 
 export const checkLogin = () =>{
     return function(dispatch) {
-        //let response = await fetch("https://randomuser.me/api/?results=15");
-        dispatch(authChecked())
+        AsyncStorage.getItem('token')
+            .then(authStateResult => {
+                authStateResult != null ? dispatch({ type: LOGIN }) : null;                
+            })
+            .catch(error => console.debug(error))
+            .finally(() => dispatch(authChecked()));
     }
 }

@@ -31,6 +31,7 @@ class AppNavegation extends Component {
 			this.setState({ isLoading: false });
 		}
 	}
+	
 	render() {
 		if (this.state.isLoading) {
 			return <SplashScreen />;
