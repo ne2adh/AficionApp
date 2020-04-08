@@ -7,6 +7,7 @@ import {
 import {
     createDrawerNavigator,
     DrawerItem,
+    DrawerItemList,
     DrawerContentScrollView
 } from '@react-navigation/drawer';
 
@@ -35,7 +36,10 @@ import {
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-const customDrawerContent = (props, dispatch) => {   
+
+function CustomDrawerContent(props) {
+    const dispatch = useDispatch();
+    const {data} = props;
     return (
         <DrawerContentScrollView {...props}>
             <View style={customDrawen.drawerContent}>
@@ -52,7 +56,7 @@ const customDrawerContent = (props, dispatch) => {
                             }}
                         />
                         <Text style={customDrawen.title}>Dawid Urbaniak</Text>
-                        <Text style={customDrawen.caption}>@trensik</Text>
+                        <Text style={customDrawen.caption}>@{data}</Text>
                         <View style={customDrawen.row}>
                             <View style={customDrawen.section}>
                                 <Text style={[customDrawen.paragraph, customDrawen.caption]}>202</Text>
@@ -66,6 +70,7 @@ const customDrawerContent = (props, dispatch) => {
                     </ImageBackground>
                 </View>
                 <View style={customDrawen.drawerSection}>
+                    <DrawerItemList {...props} />
                     <DrawerItem
                         icon={({ color, size }) => (
                             <Icon
@@ -102,22 +107,32 @@ const customDrawerContent = (props, dispatch) => {
                         label="Bookmarks"
                         onPress={() => { }}
                     />
-                    <DrawerItem label="Logout" onPress={() =>{
-                        Alert.alert(
-                            'Log out',
-                            'Do you want to logout?',
-                            [
-                                { text: 'Cancel', onPress: () => { return null } },
-                                {
-                                    text: 'Confirm', onPress: () => {
-                                        AsyncStorage.removeItem('token')
-                                            .then(() => dispatch({type:LOGOUT}))
-                                    }
-                                },
-                            ],
-                            { cancelable: false }
-                        )
-}
+                    <DrawerItem
+                        icon={({ color, size }) => (
+                            <Icon
+                                name='sign-out'
+                                type='font-awesome'
+                                color={color}
+                                size={size}
+                            />
+                        )} 
+                        label="Logout" 
+                        onPress={() =>{
+                            Alert.alert(
+                                'Cerrar Session',
+                                'Quiere cerrar session ?',
+                                [
+                                    { text: 'Cancelar', onPress: () => { return null } },
+                                    {
+                                        text: 'Confirmar', onPress: () => {
+                                            AsyncStorage.removeItem('token')
+                                                .then(() => dispatch({type:LOGOUT}))
+                                        }
+                                    },
+                                ],
+                                { cancelable: false }
+                            )
+                        }
                     } />
                 </View>
             </View>
@@ -125,10 +140,9 @@ const customDrawerContent = (props, dispatch) => {
     );
 }
 
-function DrawerRoutes() {
-    const dispatch = useDispatch();
+function DrawerRoutes() {     
     return (
-        <Drawer.Navigator initialRouteName="MainScreen" drawerContent={(props) => customDrawerContent(props, dispatch)}>
+        <Drawer.Navigator initialRouteName="MainScreen" drawerContent={ (props) => (<CustomDrawerContent {...props} data={'data'} />)}>
             <Drawer.Screen name="MainScreen" component={MainScreen} />
         </Drawer.Navigator>
     );
@@ -147,7 +161,6 @@ const HeaderRight = ({ navigation }) => {
 }
 
 const AppStack = (isLoggedIn) => {
-    console.log(isLoggedIn)
     return (
         <Stack.Navigator>
             {isLoggedIn ?

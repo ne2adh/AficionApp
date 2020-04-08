@@ -34,11 +34,13 @@ MainScreen.propTypes ={
 	randomPeople: PropTypes.object.isRequired
 };
 
-
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => ({
+	randomPeople: state.peopleState
+});
+/* const mapStateToProps = (state) => {
     return {
-        randomPeople: state.peopleReducer
+        randomPeople: state.peopleState
     };
-}
+} */
 
 export default connect(mapStateToProps, { fetchPeople })(MainScreen);

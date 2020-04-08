@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import loginReducer from './loginReducer';
-import peopleReducer from './peopleReducer';
+import LoginReducer from './loginReducer';
+import PeopleReducer from './peopleReducer';
+import DashboardReducer from './peopleReducer';
 
 export default combineReducers({
-  appState : loginReducer,
-  peopleReducer
+  appState : LoginReducer,
+  peopleState:PeopleReducer,
+  dashboardState : DashboardReducer
 })
