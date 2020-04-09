@@ -4,4 +4,6 @@ export const FETCHING_PEOPLE_FAILURE = 'FETCHING_PEOPLE_FAILURE';
 
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
+export const LOAD_DATA = 'LOAD_DATA';
+export const DATA_LOADED = 'DATA_LOADED';
 export const AUTH_CHECKED = 'AUTH_CHECKED';
